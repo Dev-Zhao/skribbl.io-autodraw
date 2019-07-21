@@ -10,7 +10,7 @@
     "content_scripts": [
         {
           "matches": ["https://skribbl.io/*"],
-          "css": ["main.css"],
+          "css": ["content_scripts/main.css"],
           "js": ["content_scripts/main.js"]
         }
     ],
