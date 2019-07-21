@@ -9,9 +9,9 @@
     },
     "content_scripts": [
         {
-          "matches": ["http://*.nytimes.com/*"],
-          "css": ["myStyles.css"],
-          "js": ["contentScript.js"]
+          "matches": ["https://skribbl.io/*"],
+          "css": ["main.css"],
+          "js": ["content_scripts/main.js"]
         }
     ],
     "page_action": {
