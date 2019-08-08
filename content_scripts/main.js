@@ -22,10 +22,14 @@ let hideInstructionOverlay = function () {
     canvasContainer.classList.remove('show-instruction-overlay');
 };
 
+let drawImage = function (imgSrc){
+
+};
+
 // Show overlay when 'dragenter' or 'dragover' occurs on the entire document (every element)
 // 'dragenter' - something is dragged and enters any element on the page
 // 'dragover' - something is dragged and it's over an element on the page, will occur every few hundred milliseconds for as long as the dragged item is over the element
-let showOverlay = true;
+let showOverlay = false;
 let timeout = -1;
 document.addEventListener('dragenter', function (event) {
     showOverlay = true;
@@ -60,11 +64,16 @@ gameCanvas.addEventListener('dragover', function (event) {
 });
 
 gameCanvas.addEventListener('drop', function (event) {
+    let imgSrc = imageSourceHelper.getSrcFromImgFile(event.dataTransfer) || imageSourceHelper.getSrcFromImgElement(event.dataTransfer);
 
-    // When the dragged item is dropped into the game canvas, we hide the overlay
+    if (imgSrc){
+        console.log(imgSrc);
+    }
+
+    // When the dragged item is dropped into the game canvas, hide the overlay
     hideInstructionOverlay();
 
-    // Prevent browser from loading the file that you drop
+    // Prevent browser from loading the file that is dropped
     event.preventDefault();
 });
 

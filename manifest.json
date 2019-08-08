@@ -14,7 +14,9 @@
         {
           "matches": ["https://skribbl.io/*"],
           "css": ["content_scripts/main.css"],
-          "js": ["content_scripts/main.js"]
+          "js": ["content_scripts/main.js",
+                 "content_scripts/image_source_helper.js"
+                ]
         }
     ],
     "page_action": {
