@@ -2,7 +2,7 @@
     "name": "SkribblioBot",
     "version": "1.0",
     "description": "Skribbl.io AutoDraw Bot",
-    "permissions": ["activeTab", "declarativeContent", "storage"],
+    "permissions": ["activeTab", "declarativeContent", "unlimitedStorage"],
     "web_accessible_resources": [
         "images/*"
     ],
@@ -14,8 +14,13 @@
         {
           "matches": ["https://skribbl.io/*"],
           "css": ["content_scripts/main.css"],
-          "js": ["content_scripts/main.js",
-                 "content_scripts/image_source_helper.js"
+          "js": [
+                 "content_scripts/artist.js",
+                 "content_scripts/color_palette.js",
+                 "content_scripts/image_helper.js",
+                 "content_scripts/storage.js",
+                 "content_scripts/toolbar.js",
+                 "content_scripts/main.js"
                 ]
         }
     ],
