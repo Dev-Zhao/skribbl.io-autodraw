@@ -22,12 +22,15 @@ I got really interested in making a auto draw bot after seeing this [video](http
 * Non-blocking function design, so the thousands of draw commands won't freeze the page
 
 **Options Popup**
+
 ![Options Popup](/images/readme/options_popup.gif)
 
 **Dots**
+
 ![Drawing Dots](/images/readme/draw_dots.gif)
 
 **Lines**
+
 ![Drawing Lines](/images/readme/draw_lines.gif)
 
 <a name="install-instructions"></a>
