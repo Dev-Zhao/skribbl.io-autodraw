@@ -123,7 +123,7 @@ function drawImage(imgSrc) {
     
                 commandsProcessor.setCommands(drawCommands);
     
-                commandsProcessor.process(5, () => {
+                commandsProcessor.process(10, () => {
                     return toolbar.isActive;
                 });
             });
