@@ -131,14 +131,18 @@ let createArtist = function (toolbar) {
                 currColor = toolbar.getNearestAvailableColor(currColor);
 
                 if (!currColor.isEqual(lineColor)) {
-                    let lineStart = (startX * brushDiameter) + xOffset;
-                    let lineEnd = ((x - 1) * brushDiameter) + xOffset;
+                    let lineStartX = (startX * brushDiameter) + xOffset;
+                    let lineEndX = ((x - 1) * brushDiameter) + xOffset;
 
                     horizontalLines.push({
-                        type: "Horizontal",
-                        x: lineStart,
-                        y: (y * brushDiameter) + yOffset,
-                        length: lineEnd - lineStart,
+                        start: {
+                            x: lineStartX,
+                            y: (y * brushDiameter) + yOffset,
+                        },
+                        end: {
+                            x: lineEndX,
+                            y: (y * brushDiameter) + yOffset,
+                        },
                         color: lineColor,
                         brushDiameter: brushDiameter
                     });
@@ -162,14 +166,18 @@ let createArtist = function (toolbar) {
                 currColor = toolbar.getNearestAvailableColor(currColor);
 
                 if (!currColor.isEqual(lineColor)) {
-                    let lineStart = (startY * brushDiameter) + yOffset;
-                    let lineEnd = ((y - 1) * brushDiameter) + yOffset;
+                    let lineStartY = (startY * brushDiameter) + yOffset;
+                    let lineEndY = ((y - 1) * brushDiameter) + yOffset;
 
                     verticalLines.push({
-                        type: "Vertical",
-                        x: (x * brushDiameter) + xOffset,
-                        y: lineStart,
-                        length: lineEnd - lineStart,
+                        start: {
+                            x: (x * brushDiameter) + xOffset,
+                            y: lineStartY,
+                        },
+                        end: {
+                            x: (x * brushDiameter) + xOffset,
+                            y: lineEndY,
+                        },
                         color: lineColor,
                         brushDiameter: brushDiameter
                     });
@@ -206,20 +214,9 @@ let createArtist = function (toolbar) {
                 toolbar.setBrushNum(brushNum);
                 toolbar.setColor(line.color);
 
-                dispatchGameCanvasMouseEvent("mousedown", line.x, line.y);
-                let lineEnd;
-                switch (line.type) {
-                    case "Horizontal":
-                        lineEnd = line.x + line.length;
-                        dispatchGameCanvasMouseEvent("mousemove", lineEnd, line.y);
-                        dispatchGameCanvasMouseEvent("mouseup", lineEnd, line.y);
-                        break;
-                    case "Vertical":
-                        lineEnd = line.y + line.length;
-                        dispatchGameCanvasMouseEvent("mousemove", line.x, lineEnd);
-                        dispatchGameCanvasMouseEvent("mouseup", line.x, lineEnd);
-                        break;
-                }
+                dispatchGameCanvasMouseEvent("mousedown", line.start.x, line.start.y);
+                dispatchGameCanvasMouseEvent("mousemove", line.end.x, line.end.y);
+                dispatchGameCanvasMouseEvent("mouseup", line.end.x, line.end.y);
             });
         });
 
