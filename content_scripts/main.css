@@ -9,20 +9,20 @@
 }
 
 /* Text for instruction overlay */
-#instruction-overlay h1{
+#instruction-overlay-heading{
     font-size: 40px;
     text-align: center;
 }
 
 /* Make the text smaller on smaller browser windows */
 @media (max-width: 1200px){
-    #instruction-overlay h1{
+    #instruction-overlay-heading{
         font-size: 30px;
     }
 }
 
 @media (max-width: 920px){
-    #instruction-overlay h1{
+    #instruction-overlay-heading{
         font-size: 25px;
     }
 }
@@ -36,7 +36,8 @@
    - You cannot use 'display: none' to hide the canvasGame. The containerCanvas's height scale with the height of canvasGame. When you use 'display: none', the page will be rendered
      as if canvasGame is not there, so the height will be 0. The containerCanvas also has 'overflow: none', so anything going out of its bound will be hidden.
      Everything will be out of bounds as the height is 0, so the overlay will not show. This is set by Skribbl.io itself so it's best to leave it alone.
-        *Workaround*: If canvasGame's opacity is set to 0, it will be invisible, but its height is unaffected. */
+        *Workaround*: If canvasGame's opacity is set to 0, it will be invisible, but its height is unaffected. 
+*/
 .show-instruction-overlay #instruction-overlay{
     display: flex;
     align-items: center;
