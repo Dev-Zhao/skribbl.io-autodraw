@@ -66,7 +66,7 @@ class Toolbar{
         let nearestColor;
 
         if (color.a == 0){
-            nearestColor = null;
+            nearestColor = new Color(0, 0, 0, 0);
         }
         else if (key in this._nearestColorLookup) {
             // look for the nearest color in the lookup. This is what the lookup looks like: 

@@ -1,6 +1,7 @@
 let createArtist = function (toolbar) {
     let gameCanvas = document.getElementById('canvasGame');
     let gameBackgroundColor = new Color(255, 255, 255, 255) // white;
+    let transparentColor = new Color(0, 0, 0, 0);
 
     let createGameCanvasMouseEvent = function (name, x, y) {
         // Used to get position of the game canvas relative to the view port
@@ -83,7 +84,7 @@ let createArtist = function (toolbar) {
         });
 
         dots.forEach((dot) => {
-            if (dot.color == null || dot.color.isEqual(gameBackgroundColor)) {
+            if (dot.color == transparentColor || dot.color.isEqual(gameBackgroundColor)) {
                 console.log("hi");
                 // Don't draw any dots that have the same color as game background color
                 return;
@@ -195,7 +196,7 @@ let createArtist = function (toolbar) {
 
         // Get the position of the 
         lines.forEach((line) => {
-            if (line.color == null || line.color.isEqual(gameBackgroundColor)) {
+            if (line.color == transparentColor || line.color.isEqual(gameBackgroundColor)) {
                 // Don't draw any dots that have the same color as game background color
                 return;
             }
