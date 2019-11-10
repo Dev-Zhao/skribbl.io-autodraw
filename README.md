@@ -5,7 +5,7 @@
 * [Introduction](#introduction)
 * [Features](#features)
 * [Installation Instructions](#install-instructions)
-* [Todo](#todo)
+* [ToDo](#todo)
 
 <a name="introduction"></a>
 ## Introduction
@@ -44,7 +44,7 @@ I got really interested in making a auto draw bot after seeing this [video](http
 ![Installation Guide](/images/readme/install_guide.png)
 
 <a name="todo"></a>
-## Todo
+## ToDo
 * Figuring out how to process images better and draw them faster!
     * Implement dithering
         * In Skribblio you can only use a limited number of colors. Usually an image will have many more colors than what is available. Therefore, any color in the image must be converted into a color that is available in game. I used a simple color distance formula to do this, but it can ruin the look of the image. The appearance of the image can be grealy improved with [dithering](https://www.cyotek.com/blog/an-introduction-to-dithering-images). This is something I hope to learn!
