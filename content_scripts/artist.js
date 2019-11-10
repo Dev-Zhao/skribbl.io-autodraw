@@ -143,6 +143,7 @@ let createArtist = function (toolbar) {
                             x: lineEndX,
                             y: (y * brushDiameter) + yOffset,
                         },
+                        length: lineEndX - lineStartX,
                         color: lineColor,
                         brushDiameter: brushDiameter
                     });
@@ -178,6 +179,7 @@ let createArtist = function (toolbar) {
                             x: (x * brushDiameter) + xOffset,
                             y: lineEndY,
                         },
+                        length: lineEndY - lineStartY,
                         color: lineColor,
                         brushDiameter: brushDiameter
                     });
