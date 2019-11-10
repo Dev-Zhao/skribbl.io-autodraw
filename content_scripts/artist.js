@@ -84,7 +84,7 @@ let createArtist = function (toolbar) {
         });
 
         dots.forEach((dot) => {
-            if (dot.color == transparentColor || dot.color.isEqual(gameBackgroundColor)) {
+            if (dot.color.isEqual(transparentColor) || dot.color.isEqual(gameBackgroundColor)) {
                 console.log("hi");
                 // Don't draw any dots that have the same color as game background color
                 return;
@@ -196,7 +196,7 @@ let createArtist = function (toolbar) {
 
         // Get the position of the 
         lines.forEach((line) => {
-            if (line.color == transparentColor || line.color.isEqual(gameBackgroundColor)) {
+            if (line.color.isEqual(transparentColor) || line.color.isEqual(gameBackgroundColor)) {
                 // Don't draw any dots that have the same color as game background color
                 return;
             }
