@@ -2,18 +2,59 @@
 <html>
 
 <head>
-    <style>
-        button {
-            height: 30px;
-            width: 30px;
-            outline: none;
-        }
-    </style>
+  <title>SkribblioBot Options</title>
+
+  <!-- Bootstrap -->
+  <script src="external_libraries/jQuery/jQuery.js"></script>
+  <script src="external_libraries/popper/popper.js"></script>
+  <link rel="stylesheet" href="external_libraries/bootstrap-4.3.1-dist/css/bootstrap.min.css">
+  <script src="external_libraries/bootstrap-4.3.1-dist/js/bootstrap.min.js"></script>
+
+  <!-- Storage -->
+  <script src="content_scripts/storage.js"></script>
+  
+  <!-- Popup CSS-->
+  <link rel="stylesheet" href="popup.css">
 </head>
 
 <body>
-    <button id="changeColor"></button>
-    <script src="popup.js"></script>
+  <img src="images/pencil.gif" class="mx-auto d-block" alt="Responsive image">
+
+  <form>
+    <h2 class="text-center form-heading">Draw Mode</h2>
+    <div id="drawModeOptionsContainer" class="form-group text-center">
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" name="drawModeRadios" id="drawModeDotsRadio" value="Dots">
+        <label class="form-check-label" for="drawModeDotsRadio">
+          Dots
+        </label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" name="drawModeRadios" id="drawModeLinesRadio" value="Lines">
+        <label class="form-check-label" for="drawModeLinesRadio">
+          Lines
+        </label>
+      </div>
+    </div>
+
+    <h2 class="text-center form-heading">Brush Size</h2>
+    <div id="brushNumRangeInputContainer" class="form-group">
+      <input type="range" class="form-control-range" id="brushNumRangeInput" min="0" max="3">
+      <mark id="brushNumIndicator" class="form-text text-center">
+        Medium
+      </mark>
+      <small class="form-text text-muted text-center">
+        Drawing with a smaller brush increases detail, but takes longer.
+      </small>
+    </div>
+
+    <div class="form-group text-center">
+      <button id="saveButton" type="button" class="btn btn-secondary mx-auto">Save</button>
+    </div>
+  </form>
+
+  <!-- Popup JS-->
+  <script src="popup.js"></script>
 </body>
 
 </html>
