@@ -85,7 +85,6 @@ let createArtist = function (toolbar) {
 
         dots.forEach((dot) => {
             if (dot.color.isEqual(transparentColor) || dot.color.isEqual(gameBackgroundColor)) {
-                console.log("hi");
                 // Don't draw any dots that have the same color as game background color
                 return;
             }
@@ -131,22 +130,24 @@ let createArtist = function (toolbar) {
                 currColor = toolbar.getNearestAvailableColor(currColor);
 
                 if (!currColor.isEqual(lineColor)) {
-                    let lineStartX = (startX * brushDiameter) + xOffset;
-                    let lineEndX = ((x - 1) * brushDiameter) + xOffset;
-
-                    horizontalLines.push({
-                        start: {
-                            x: lineStartX,
-                            y: (y * brushDiameter) + yOffset,
-                        },
-                        end: {
-                            x: lineEndX,
-                            y: (y * brushDiameter) + yOffset,
-                        },
-                        length: lineEndX - lineStartX,
-                        color: lineColor,
-                        brushDiameter: brushDiameter
-                    });
+                    if (!lineColor.isEqual(transparentColor) && !lineColor.isEqual(gameBackgroundColor)) {
+                        let lineStartX = (startX * brushDiameter) + xOffset;
+                        let lineEndX = ((x - 1) * brushDiameter) + xOffset;
+    
+                        horizontalLines.push({
+                            start: {
+                                x: lineStartX,
+                                y: (y * brushDiameter) + yOffset,
+                            },
+                            end: {
+                                x: lineEndX,
+                                y: (y * brushDiameter) + yOffset,
+                            },
+                            length: lineEndX - lineStartX,
+                            color: lineColor,
+                            brushDiameter: brushDiameter
+                        });
+                    }
 
                     startX = x;
                     lineColor = currColor;
@@ -167,22 +168,24 @@ let createArtist = function (toolbar) {
                 currColor = toolbar.getNearestAvailableColor(currColor);
 
                 if (!currColor.isEqual(lineColor)) {
-                    let lineStartY = (startY * brushDiameter) + yOffset;
-                    let lineEndY = ((y - 1) * brushDiameter) + yOffset;
-
-                    verticalLines.push({
-                        start: {
-                            x: (x * brushDiameter) + xOffset,
-                            y: lineStartY,
-                        },
-                        end: {
-                            x: (x * brushDiameter) + xOffset,
-                            y: lineEndY,
-                        },
-                        length: lineEndY - lineStartY,
-                        color: lineColor,
-                        brushDiameter: brushDiameter
-                    });
+                    if (!lineColor.isEqual(transparentColor) && !lineColor.isEqual(gameBackgroundColor)) {
+                        let lineStartY = (startY * brushDiameter) + yOffset;
+                        let lineEndY = ((y - 1) * brushDiameter) + yOffset;
+    
+                        verticalLines.push({
+                            start: {
+                                x: (x * brushDiameter) + xOffset,
+                                y: lineStartY,
+                            },
+                            end: {
+                                x: (x * brushDiameter) + xOffset,
+                                y: lineEndY,
+                            },
+                            length: lineEndY - lineStartY,
+                            color: lineColor,
+                            brushDiameter: brushDiameter
+                        });
+                    }
 
                     startY = y;
                     lineColor = currColor;
@@ -200,17 +203,16 @@ let createArtist = function (toolbar) {
 
         let lines = generateLines(img, brushDiameter);
 
+        lines.sort(() => {
+            return Math.random() - 0.5;
+        });
+
         lines.sort((line1, line2) => {
             return line2.length - line1.length;
         });
 
         // Get the position of the 
         lines.forEach((line) => {
-            if (line.color.isEqual(transparentColor) || line.color.isEqual(gameBackgroundColor)) {
-                // Don't draw any dots that have the same color as game background color
-                return;
-            }
-
             commands.push(function () {
                 toolbar.useTool('brush');
                 toolbar.setBrushNum(brushNum);
