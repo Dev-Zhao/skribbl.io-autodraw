@@ -10,6 +10,10 @@ class Color {
         return JSON.stringify(this);
     }
 
+    isEqual(color){
+        return (this.r == color.r && this.g == color.g && this.b == color.b && this.a == color.a);
+    }
+
     /*
         'Get Color Component from RGB String' - https://stackoverflow.com/questions/10970958/get-a-color-component-from-an-rgb-string-in-javascript
         Example rgbString: 'rgb(255, 0, 6)' - This can be obtained from element.style.backgroundColor

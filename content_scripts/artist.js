@@ -48,9 +48,6 @@ let createArtist = function (toolbar) {
             for (let x = 0; x < imageData.width; x += brushDiameter) {
                 // Get the average color of that area
                 let averageColor = imageHelper.getAverageColor(imageData, x, y, brushDiameter, brushDiameter);
-                if (averageColor.a == 0) { // Go to next area if current area is entirely transparent
-                    continue;
-                }
 
                 // Get the nearest color that's available in Skribbl.io
                 let nearestColor = toolbar.getNearestAvailableColor(averageColor);
@@ -86,7 +83,8 @@ let createArtist = function (toolbar) {
         });
 
         dots.forEach((dot) => {
-            if (dot.color == gameBackgroundColor || dot.color == null) {
+            if (dot.color.isEqual(gameBackgroundColor) || dot.color == null) {
+                console.log("hi");
                 // Don't draw any dots that have the same color as game background color
                 return;
             }
@@ -131,7 +129,7 @@ let createArtist = function (toolbar) {
                 currColor = imageHelper.getPixelColor(imageData, x, y);
                 currColor = toolbar.getNearestAvailableColor(currColor);
 
-                if (currColor != lineColor) {
+                if (!currColor.isEqual(lineColor)) {
                     let lineStart = (startX * brushDiameter) + xOffset;
                     let lineEnd = ((x - 1) * brushDiameter) + xOffset;
 
@@ -162,7 +160,7 @@ let createArtist = function (toolbar) {
                 currColor = imageHelper.getPixelColor(imageData, x, y);
                 currColor = toolbar.getNearestAvailableColor(currColor);
 
-                if (currColor != lineColor) {
+                if (!currColor.isEqual(lineColor)) {
                     let lineStart = (startY * brushDiameter) + yOffset;
                     let lineEnd = ((y - 1) * brushDiameter) + yOffset;
 
@@ -197,7 +195,7 @@ let createArtist = function (toolbar) {
 
         // Get the position of the 
         lines.forEach((line) => {
-            if (line.color == gameBackgroundColor || line.color == null) {
+            if (line.color.isEqual(gameBackgroundColor) || line.color == null) {
                 // Don't draw any dots that have the same color as game background color
                 return;
             }
