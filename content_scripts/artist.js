@@ -203,10 +203,6 @@ let createArtist = function (toolbar) {
 
         let lines = generateLines(img, brushDiameter);
 
-        lines.sort(() => {
-            return Math.random() - 0.5;
-        });
-
         lines.sort((line1, line2) => {
             return line2.length - line1.length;
         });
