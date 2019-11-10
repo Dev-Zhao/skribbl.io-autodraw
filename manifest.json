@@ -1,8 +1,8 @@
 {
     "name": "SkribblioBot",
     "version": "1.0",
-    "description": "Skribbl.io AutoDraw Bot",
-    "permissions": ["activeTab", "declarativeContent", "unlimitedStorage"],
+    "description": "Skribbl.io Auto Draw Bot",
+    "permissions": ["activeTab", "declarativeContent", "storage"],
     "web_accessible_resources": [
         "images/*"
     ],
@@ -16,7 +16,9 @@
           "css": ["content_scripts/main.css"],
           "js": [
                  "content_scripts/artist.js",
-                 "content_scripts/color_palette.js",
+                 "content_scripts/color.js",
+                 "content_scripts/commands_processor.js",
+                 "content_scripts/data_transfer_helper.js",
                  "content_scripts/image_helper.js",
                  "content_scripts/storage.js",
                  "content_scripts/toolbar.js",
