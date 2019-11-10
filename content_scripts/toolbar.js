@@ -39,12 +39,12 @@ class Toolbar{
             },
             2 : {
                 brushDiameterforDots: 20,
-                brushDiameterforLines: 16,
+                brushDiameterforLines: 17,
                 brushElement: brushElementsContainer.children[2]
             },
             3 : {
                 brushDiameterforDots: 40,
-                brushDiameterforLines: 36,
+                brushDiameterforLines: 37,
                 brushElement: brushElementsContainer.children[3]
             },
         };
