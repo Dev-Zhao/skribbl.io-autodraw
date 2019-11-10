@@ -1,27 +1,25 @@
 let storage = {
-    get: function (key) {
-        return new Promise(function (resolve, reject) {
-            chrome.storage.local.get(key, function (result) {
-                if (result) {
-                    resolve(result);
+    getData: function(key){
+        return new Promise ((resolve, reject) => {
+            chrome.storage.sync.get(key, (data) => {
+                if (chrome.runtime.lastError){
+                    reject(chrome.runtime.lastError.message);
                 }
-                else {
-                    reject();
-                }
-            });
+
+                resolve(data[key]);
+            });        
         });
     },
 
-    set: function (key, data) {
-        return new Promise(function (resolve, reject) {
-            chrome.storage.local.set({ key: data }, function () {
-                if (chrome.runtime.lastError) {
-                    reject(chrome.runtime.lastError);
+    setData: function(data){
+        return new Promise ((resolve, reject) => {
+            chrome.storage.sync.set(data, () => {
+                if (chrome.runtime.lastError){
+                    reject(chrome.runtime.lastError.message);
                 }
-                else {
-                    resolve();
-                }
-            });
-        });
+
+                resolve();
+            });        
+        });        
     }
-}
+};
