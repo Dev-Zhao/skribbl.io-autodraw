@@ -3,7 +3,7 @@ let createArtist = function (toolbar) {
     let gameBackgroundColor = new Color(255, 255, 255, 255) // white;
     let transparentColor = new Color(0, 0, 0, 0);
 
-    let createGameCanvasMouseEvent = function (name, x, y) {
+    let dispatchGameCanvasMouseEvent = function (name, x, y) {
         // Used to get position of the game canvas relative to the view port
         // See: https://developer.mozilla.org/en-US/docs/Web/API/Element/getBoundingClientRect
         let rect = gameCanvas.getBoundingClientRect();
@@ -95,8 +95,8 @@ let createArtist = function (toolbar) {
                 toolbar.setBrushNum(brushNum);
                 toolbar.setColor(dot.color);
 
-                createGameCanvasMouseEvent("mousedown", dot.x, dot.y);
-                createGameCanvasMouseEvent("mouseup", dot.x, dot.y);
+                dispatchGameCanvasMouseEvent("mousedown", dot.x, dot.y);
+                dispatchGameCanvasMouseEvent("mouseup", dot.x, dot.y);
             });
         });
 
@@ -206,22 +206,18 @@ let createArtist = function (toolbar) {
                 toolbar.setBrushNum(brushNum);
                 toolbar.setColor(line.color);
 
-                createGameCanvasMouseEvent("mousedown", line.x, line.y);
+                dispatchGameCanvasMouseEvent("mousedown", line.x, line.y);
                 let lineEnd;
                 switch (line.type) {
                     case "Horizontal":
                         lineEnd = line.x + line.length;
-                        for (let x = line.x; x < lineEnd; x++) {
-                            createGameCanvasMouseEvent("mousemove", x, line.y);
-                        }
-                        createGameCanvasMouseEvent("mouseup", lineEnd, line.y);
+                        dispatchGameCanvasMouseEvent("mousemove", lineEnd, line.y);
+                        dispatchGameCanvasMouseEvent("mouseup", lineEnd, line.y);
                         break;
                     case "Vertical":
                         lineEnd = line.y + line.length;
-                        for (let y = line.y; y < lineEnd; y++) {
-                            createGameCanvasMouseEvent("mousemove", line.x, y);
-                        }
-                        createGameCanvasMouseEvent("mouseup", line.x, lineEnd);
+                        dispatchGameCanvasMouseEvent("mousemove", line.x, lineEnd);
+                        dispatchGameCanvasMouseEvent("mouseup", line.x, lineEnd);
                         break;
                 }
             });
