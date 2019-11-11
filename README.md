@@ -45,8 +45,9 @@ I got really interested in making a auto draw bot after seeing this [video](http
 
 <a name="todo"></a>
 ## ToDo
-* Figuring out how to process images better and draw them faster!
-    * Implement dithering
-        * In Skribblio you can only use a limited number of colors. Usually an image will have many more colors than what is available. Therefore, any color in the image must be converted into a color that is available in game. I used a simple color distance formula to do this, but it can ruin the look of the image. The appearance of the image can be grealy improved with [dithering](https://www.cyotek.com/blog/an-introduction-to-dithering-images). This is something I hope to learn!
+* Implement dithering
+    * In Skribblio you can only use a limited number of colors. Usually an image will have many more colors than what is available. Therefore, any color in the image must be converted into a color that is available in game. I used a simple color distance formula to do this, but it can ruin the look of the image. The appearance of the image can be grealy improved with [dithering](https://www.cyotek.com/blog/an-introduction-to-dithering-images). This is something I hope to learn!
+* Implement [edge detection](https://towardsdatascience.com/canny-edge-detection-step-by-step-in-python-computer-vision-b49c3a2d8123)
+    * It will be much faster if we only draw the outlines of an image. It will also make it look like an actual drawing.
 * Automatically present user with images related to the word they are drawing. The user can then choose an image to draw.
 * Add more options (draw modes, invert colors, etc.)
