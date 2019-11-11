@@ -11,7 +11,7 @@
 ## Introduction
 [Skribblio](http://skribbl.io) is a popular multiplayer drawing and guessing game. Players take turns to draw and others will try to guess the word, the faster it is guessed the more points they earn!
 
-I got really interested in making a auto draw bot after seeing this [video](https://www.youtube.com/watch?v=fGMWWyGzRbk). I keep seeing cool projects online and I always wondered how they were made. I was learning about chrome extensions and how they can manipulate a page's HTML/CSS. I was also learning about image processing using Javascript Canvas. I thought it would be the perfect time to put my skills to the test by putting these tools together!
+I got really interested in making an auto draw bot after seeing this [video](https://www.youtube.com/watch?v=fGMWWyGzRbk). I keep seeing cool projects online and I always wondered how they were made. I was learning about chrome extensions and how they can manipulate a page's HTML/CSS. I was also learning about image processing using Javascript Canvas. I thought it would be the perfect time to put my skills to the test by putting these tools together!
 
 <a name="features"></a>
 ## Features
