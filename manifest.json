@@ -1,7 +1,7 @@
 {
-    "name": "SkribblioBot",
+    "name": "SkribblioArtist",
     "version": "1.0",
-    "description": "Skribbl.io Auto Draw Bot",
+    "description": "Skribbl.io Auto Draw Chrome Extension",
     "permissions": ["activeTab", "declarativeContent", "storage"],
     "web_accessible_resources": [
         "images/*"

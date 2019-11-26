@@ -29,7 +29,7 @@ class Toolbar{
         this._brushElementsLookup = {
             0 : {
                 brushDiameterforDots: 4,
-                brushDiameterforLines: 2,
+                brushDiameterforLines: 2.7,
                 brushElement: brushElementsContainer.children[0]
             },
             1 : {
