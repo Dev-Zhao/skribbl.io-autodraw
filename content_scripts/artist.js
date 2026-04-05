@@ -1,5 +1,5 @@
 let createArtist = function (toolbar) {
-    let gameCanvas = document.getElementById('canvasGame');
+    let gameCanvas = document.querySelector('#game-canvas canvas');
     let gameBackgroundColor = new Color(255, 255, 255, 255) // white;
     let transparentColor = new Color(0, 0, 0, 0);
 
@@ -14,7 +14,7 @@ let createArtist = function (toolbar) {
         //  > This is fixed (800x600)
         // See: https://stackoverflow.com/a/19079320
         //
-        // Suppose game canvas was 800x600 and we wanted to create a mouse event at x = 200 and y = 200 
+        // Suppose game canvas was 800x600 and we wanted to create a mouse event at x = 200 and y = 200
         // If the game canvas get resized to 400x300 (halved), then the mouse event has to be created at x = 100 and y = 100
         // IMPORTANT: When game canvas resizes, it maintains aspect ratio, so both width and height will resize by same ratio
         let ratio = rect.width / gameCanvas.width;
@@ -22,16 +22,25 @@ let createArtist = function (toolbar) {
         // rect.x and rect.y - position of the top left corner of the canvas
         // x and y - position of where the mouse event will take place relative to the canvas
         // > we multiply this by the ratio to account for the actual size of the canvas shown on the page
-        let mouseEvent = new MouseEvent(name,
-            {
-                bubbles: true,
-                clientX: rect.x + x * ratio,
-                clientY: rect.y + y * ratio,
-                button: 0
-            }
-        );
+        let eventInit = {
+            bubbles: true,
+            cancelable: true,
+            clientX: rect.x + x * ratio,
+            clientY: rect.y + y * ratio,
+            button: 0,
+            buttons: name === 'mouseup' ? 0 : 1,
+            pointerId: 1,
+            isPrimary: true,
+            pointerType: 'mouse'
+        };
 
-        gameCanvas.dispatchEvent(mouseEvent);
+        let pointerName = name
+            .replace('mousedown', 'pointerdown')
+            .replace('mousemove', 'pointermove')
+            .replace('mouseup', 'pointerup');
+
+        gameCanvas.dispatchEvent(new PointerEvent(pointerName, eventInit));
+        gameCanvas.dispatchEvent(new MouseEvent(name, eventInit));
     };
 
     let generateDots = function (img, brushDiameter) {
@@ -133,7 +142,7 @@ let createArtist = function (toolbar) {
                     if (!lineColor.isEqual(transparentColor) && !lineColor.isEqual(gameBackgroundColor)) {
                         let lineStartX = (startX * brushDiameter) + xOffset;
                         let lineEndX = ((x - 1) * brushDiameter) + xOffset;
-    
+
                         horizontalLines.push({
                             start: {
                                 x: lineStartX,
@@ -171,7 +180,7 @@ let createArtist = function (toolbar) {
                     if (!lineColor.isEqual(transparentColor) && !lineColor.isEqual(gameBackgroundColor)) {
                         let lineStartY = (startY * brushDiameter) + yOffset;
                         let lineEndY = ((y - 1) * brushDiameter) + yOffset;
-    
+
                         verticalLines.push({
                             start: {
                                 x: (x * brushDiameter) + xOffset,
@@ -207,7 +216,7 @@ let createArtist = function (toolbar) {
             return line2.length - line1.length;
         });
 
-        // Get the position of the 
+        // Get the position of the
         lines.forEach((line) => {
             commands.push(function () {
                 toolbar.useTool('brush');
